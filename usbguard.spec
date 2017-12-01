@@ -17,8 +17,8 @@ Group:          System Environment/Daemons
 License:        GPLv2+
 ## Not installed
 # src/ThirdParty/Catch: Boost Software License - Version 1.0
-URL:            https://dkopecek.github.io/usbguard
-Source0:	https://github.com/dkopecek/usbguard/archive/%{pkg_branch}.tar.gz
+URL:            https://usbguard.github.io
+Source0:        https://github.com/USBGuard/usbguard/archive/%{pkg_branch}.tar.gz
 
 Requires: systemd
 Requires(post): systemd
@@ -51,9 +51,7 @@ BuildRequires: libxslt
 BuildRequires: libxml2
 %endif
 
-%if 0%{?fedora}
-BuildRequires: pandoc
-%endif
+BuildRequires: asciidoctor
 
 %ifarch ppc
 #
@@ -165,7 +163,7 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
+%doc README.adoc CHANGELOG.md
 %license LICENSE
 %{_libdir}/*.so.*
 %{_sbindir}/usbguard-daemon
